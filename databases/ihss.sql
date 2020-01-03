@@ -25,13 +25,13 @@ DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
   `user_id` bigint(20) NOT NULL AUTO_INCREMENT,
   `user_name` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `user_imsi` bigint(15) NOT NULL AUTO_INCREMENT,
-  `user_key`                                                                                      /* the type of this parameter should be a hexa on 32 characters */
+  `user_imsi` varchar(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `user_key`  varchar(32) COLLATE utf8mb4_unicode_ci DEFAULT NULL,                                /* the type of this parameter should be a hexa on 32 characters */
   `user_op_type` varchar(3) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `user_op_or_opc`                                                                                /* the type of this parameter should be a hexa on 32 characters */
-  `user_amf`  bigint(4) NOT NULL AUTO_INCREMENT,
-  `user_sqn`                                                                                      /* the type of this parameter should be a hexa on 12 characters */
-  `user_qci` bigint(2) NOT NULL AUTO_INCREMENT,
+  `user_op_or_opc` varchar(32) COLLATE utf8mb4_unicode_ci DEFAULT NULL,                           /* the type of this parameter should be a hexa on 32 characters */
+  `user_amf`  varchar(4) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `user_sqn` varchar(12) COLLATE utf8mb4_unicode_ci DEFAULT NULL,                                /* the type of this parameter should be a hexa on 12 characters */
+  `user_qci` varchar(2) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `user_email` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -49,8 +49,8 @@ INSERT INTO `user` VALUES (3,'ue3','901700000022950','0d1fe19b5d4c8e6ba4e995b255
 INSERT INTO `user` VALUES (4,'ue4','901700000022969','8baf473f2f8fd09487cccbd7097c6862','op','11111111111111111111111111111111','8000','000000001234','7','midu@email.com');
 INSERT INTO `user` VALUES (5,'ue6','901700000027988','b46fadaa27a9785c7803b9bd7b3450de','opc','47d3987d31a606289b6c01d4c31a31a2','8000','000000001234','7','midu@email.com');
 INSERT INTO `user` VALUES (6,'ue5','901700000027989','7b3cba07409abdd16c1ceffed3e5ab53','opc','bc4a47aeb1bfe38b542172aee0c28082','8000','000000001234','9','midu@email.com');
-/*!40000 ALTER TABLE `user` ENABLE KEYS */
-UNLOCK TABLES;
+/*!40000 ALTER TABLE `user` ENABLE KEYS */;
+/*UNLOCK TABLES;*/;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
