@@ -4,7 +4,9 @@ The role of this project is to extend the srsLTE-HSS create a api-server that wi
 
 ## Architecture
 
-Figure 1.0 srsLTE-HSS extendend architecture 
+Figure 1.0 srsLTE-iHSS extendend software architecture 
+
+![Imgur](https://i.imgur.com/yVvgIMm.jpg)
 
 
 ## Contact
