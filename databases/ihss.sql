@@ -35,6 +35,18 @@ CREATE TABLE `user` (
   `user_email` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `user_behaviour`
+--
+
+DROP TABLE IF EXISTS `user_behaviour`;
+CREATE TABLE `user_behaviour` (
+  `user_id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `user_imsi` varchar(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `user_reconnections` int(10) DEFAULT NULL,
+  PRIMARY KEY (`user_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -60,5 +72,12 @@ INSERT INTO `user` VALUES (6,'ue5','901700000027989','7b3cba07409abdd16c1ceffed3
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+LOCK TABLES `user_behaviour` WRITE;
+INSERT INTO `user_behaviour` VALUES (1, '001010123456780', '0');
+INSERT INTO `user_behaviour` VALUES (2, '001010123456789', '0');
+INSERT INTO `user_behaviour` VALUES (3, '901700000022950', '0');
+INSERT INTO `user_behaviour` VALUES (4, '901700000022969', '0');
+INSERT INTO `user_behaviour` VALUES (5, '901700000027988', '0');
+INSERT INTO `user_behaviour` VALUES (6, '901700000027989', '0');
 
 -- Dump completed on 2020-01-02 14:27:54

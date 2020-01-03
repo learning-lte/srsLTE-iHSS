@@ -2,8 +2,10 @@ import pymysql
 from app import app
 from db import mysql
 from flask import jsonify, request
+from mysql.connector import Error
 
 @app.route('/user')
+# GET a new user in the mysql-DB
 def get_user():
 	conn = None;
 	cursor = None;
@@ -26,3 +28,27 @@ def get_user():
 	finally:
 		cursor.close() 
 		conn.close()
+
+# POST a new user in the mysql-DB 
+def post_user():
+	conn = None;
+	cursor = None;
+	try:
+		id = request.args.get('id')
+		if id:
+			conn = mysql.connect()
+			cursor = conn.cursor(pymysql.cursors.DictCursor)
+			mySql_insert_query="""INSERT INTO user (user_id, user_name, user_imsi, user_key, user_op_type, user_op_or_opc, user_sqn, user_qci, user_email) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s) """
+			recordTuple = (user_id, user_name, user_imsi, user_key, user_op_type, user_op_or_opc, user_sqn, user_qci, user_email)
+			cursor.execute(mySql_insert_query, recordTuple)
+			connection.commit()
+			print("The record has been successfully into the user mysql table!")
+		
+		except mysql.connection.Error as error:
+			print("Failed to insert into the MysqlDB table {}".format(error))
+
+		finally:
+			if (connection.is_connected()):
+				cursor.close()
+				connection.close()
+				print("MySQL DB connection is closed at this moment")
