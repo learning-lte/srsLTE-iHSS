@@ -9,6 +9,8 @@ Figure 1.0 srsLTE-iHSS extendend software architecture
 ![Imgur](https://i.imgur.com/yVvgIMm.jpg)
 
 
+The MME will integrogate the iHSS rest-API and will obtain all the informations instead of reading them from the ``` user_db.csv ```
+
 ## Contact
 
 idumihai16@gmail.com
