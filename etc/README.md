@@ -10,8 +10,8 @@
 
 05-01-2020 - version 1.2 - Added the HTTP methods for the REST-API.
 
-|HTTP |Method |URI |Action|
-|-----|-------|----|------|
+|HTTP Method |URI |Action|
+|------------|----|------|
 |GET    |http://[hostname]/user |Retrieve list of tasks
 |GET	|http://[hostname]/user	|Retrieve a task
 |POST	|http://[hostname]/user |Create a new task
