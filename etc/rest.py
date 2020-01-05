@@ -42,14 +42,36 @@ def post_user():
 			mySql_insert_query="""INSERT INTO user (user_id, user_name, user_imsi, user_key, user_op_type, user_op_or_opc, user_sqn, user_qci, user_email) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s) """
 			recordTuple = (user_id, user_name, user_imsi, user_key, user_op_type, user_op_or_opc, user_sqn, user_qci, user_email)
 			cursor.execute(mySql_insert_query, recordTuple)
-			connection.commit()
+			conn.commit()
 			print("The record has been successfully into the user mysql table!")
-		
-		except mysql.connection.Error as error:
-			print("Failed to insert into the MysqlDB table {}".format(error))
-
+		except Exception as e:
+			print(e)
 		finally:
-			if (connection.is_connected()):
+			if (conn.is_connected()):
 				cursor.close()
-				connection.close()
+				conn.close()
 				print("MySQL DB connection is closed at this moment")
+
+@app.route('/user', methods=['DELETE'])
+# DELETE a user from the mysql-DB
+def delete_user():
+	conn = None;
+	cursor = None;
+	try:
+		id = request.args.get('id')
+		if id:
+			conn = mysql.connect()
+			cursor = conn.cursor(pymysql.cursors.DictCursor)
+			mySql_insert_query="""Delete from user where id=%s"""
+			userId = id
+			cursor.execute(mySql_insert_query, (userId,))
+			conn.commit()
+			print("Record Deleted successfully ")
+
+except mysql.conn.Error as error:
+    print("Failed to Delete record from table: {}".format(error))
+finally:
+    if (conn.is_connected()):
+        cursor.close()
+        conn.close()
+        print("MySQL connection is closed")
