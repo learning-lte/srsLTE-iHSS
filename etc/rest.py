@@ -4,7 +4,7 @@ from db import mysql
 from flask import jsonify, request
 from mysql.connector import Error
 
-@app.route('/user')
+@app.route('/user', methods=['GET'])
 # GET a new user in the mysql-DB
 def get_user():
 	conn = None;
@@ -29,6 +29,7 @@ def get_user():
 		cursor.close() 
 		conn.close()
 
+@app.route('/user', methods=['POST'])
 # POST a new user in the mysql-DB 
 def post_user():
 	conn = None;
